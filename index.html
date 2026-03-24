@@ -1,5 +1,4 @@
-export default function MinimalistLoginLandingPage() {
-  const htmlCode = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -257,14 +256,12 @@ export default function MinimalistLoginLandingPage() {
         passwordInput.focus();
       });
     }
-  <\/script>
+  </script>
 </body>
 </html>`;
 
-  const previewHtml = htmlCode.replace(
-    '<title>Login</title>',
-    '<title>Login</title><base target="_self" />'
-  );
+  const htmlCode = rawHtmlCode;
+  const previewHtml = rawHtmlCode.replace('</script>', '<\/script>');
 
   return (
     <div className="min-h-screen p-6 md:p-10" style={{ background: '#dfe3f3', color: '#1e2230' }}>
