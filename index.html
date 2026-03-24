@@ -1,63 +1,111 @@
-export default function MinimalistLoginLandingPage() {
-  const htmlCode = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #000000;
-      --panel: rgba(255, 255, 255, 0.04);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #ffffff;
-      --muted: rgba(255,255,255,0.5);
-      --input-bg: rgba(255,255,255,0.03);
-      --input-focus: rgba(255,255,255,0.06);
-      --button-bg: #ffffff;
-      --button-text: #000000;
-      --message-bg: rgba(255,255,255,0.05);
-      --message-border: rgba(255,255,255,0.1);
+      --bg: #dfe3f3;
+      --text: #1e2230;
+      --muted: rgba(30, 34, 48, 0.44);
+      --glass-fill: rgba(255, 255, 255, 0.30);
+      --glass-fill-strong: rgba(255, 255, 255, 0.42);
+      --glass-border: rgba(255, 255, 255, 0.48);
+      --glass-stroke: rgba(255, 255, 255, 0.62);
+      --input-fill: rgba(255, 255, 255, 0.36);
+      --button-text: #1c2030;
+      --button-fill: rgba(255, 255, 255, 0.34);
+      --message-fill: rgba(255, 255, 255, 0.26);
+      --message-border: rgba(255, 255, 255, 0.42);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       min-height: 100%;
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
     }
 
     body {
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: clamp(88px, 14vh, 130px) 24px 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(70px);
+      opacity: 0.55;
+    }
+
+    body::before {
+      width: 320px;
+      height: 320px;
+      top: -80px;
+      right: -40px;
+      background: rgba(255, 255, 255, 0.30);
+    }
+
+    body::after {
+      width: 260px;
+      height: 260px;
+      left: -70px;
+      bottom: -70px;
+      background: rgba(255, 255, 255, 0.22);
     }
 
     .shell {
       width: 100%;
-      max-width: 420px;
+      max-width: 438px;
+      position: relative;
+      z-index: 1;
     }
 
     .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 36px 28px 28px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      position: relative;
+      border-radius: 24px;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.22) 100%);
+      border: 1px solid rgba(255,255,255,0.52);
+      backdrop-filter: blur(22px) saturate(135%);
+      -webkit-backdrop-filter: blur(22px) saturate(135%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.45),
+        0 8px 24px rgba(112, 124, 165, 0.10);
+    }
+
+    .panel {
+      border-radius: 18px;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.22) 100%);
+      border: 1px solid rgba(255,255,255,0.44);
+      backdrop-filter: blur(18px) saturate(130%);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
     }
 
     form {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .sr-only {
@@ -74,63 +122,94 @@ export default function MinimalistLoginLandingPage() {
 
     input {
       width: 100%;
-      border: 1px solid var(--border);
-      background: var(--input-bg);
+      height: 54px;
+      padding: 0 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.40);
+      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.25) 100%);
       color: var(--text);
-      border-radius: 16px;
-      padding: 16px;
       font-size: 0.95rem;
+      font-weight: 500;
       outline: none;
-      transition: all 160ms ease;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.34);
+      transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
     }
 
-    input::placeholder { color: var(--muted); }
+    input::placeholder {
+      color: rgba(30, 34, 48, 0.50);
+    }
 
     input:focus {
-      background: var(--input-focus);
-      border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.60);
+      background: linear-gradient(180deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.28) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.42),
+        0 0 0 3px rgba(255,255,255,0.22);
+      transform: translateY(-1px);
     }
 
     button {
       width: 100%;
-      border: 0;
-      border-radius: 16px;
-      padding: 16px;
-      background: var(--button-bg);
+      height: 54px;
+      border: 1px solid rgba(255,255,255,0.42);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.30) 100%);
       color: var(--button-text);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 500;
       cursor: pointer;
-      transition: transform 120ms ease, opacity 120ms ease;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.40);
+      transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
     }
 
-    button:hover { opacity: 0.95; }
-    button:active { transform: scale(0.99); }
+    button:hover {
+      background: linear-gradient(180deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.34) 100%);
+      border-color: rgba(255,255,255,0.56);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
 
     .message {
-      min-height: 20px;
+      min-height: 18px;
       margin-top: 12px;
       padding: 10px 12px;
       border-radius: 12px;
-      font-size: 0.85rem;
-      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: rgba(30, 34, 48, 0.68);
       background: transparent;
       border: 1px solid transparent;
       opacity: 0;
-      transition: opacity 160ms ease, background 160ms ease;
+      transition: opacity 160ms ease, background 160ms ease, border-color 160ms ease;
     }
 
     .message.show {
       opacity: 1;
-      background: var(--message-bg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.20) 100%);
       border-color: var(--message-border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.32);
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 64px 18px 18px;
+      }
+
       .card {
         border-radius: 22px;
-        padding: 28px 18px;
+        padding: 12px;
+      }
+
+      .panel {
+        border-radius: 16px;
+        padding: 12px;
       }
     }
   </style>
@@ -138,21 +217,21 @@ export default function MinimalistLoginLandingPage() {
 <body>
   <main class="shell">
     <section class="card">
-      <form id="loginForm" novalidate>
-        <label class="sr-only" for="password">Password</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Password"
-          autocomplete="current-password"
-          required
-        />
-
-        <button type="submit">Submit</button>
-      </form>
-
-      <div id="message" class="message"></div>
+      <div class="panel">
+        <form id="loginForm" novalidate>
+          <label class="sr-only" for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="current-password"
+            required
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="message" class="message" aria-live="polite"></div>
+      </div>
     </section>
   </main>
 
@@ -161,23 +240,25 @@ export default function MinimalistLoginLandingPage() {
     const passwordInput = document.getElementById('password');
     const message = document.getElementById('message');
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
+    if (form && passwordInput && message) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-      const attemptedPassword = passwordInput.value.trim();
+        const attemptedPassword = passwordInput.value.trim();
 
-      if (!attemptedPassword) {
-        message.textContent = 'Enter a password.';
+        if (!attemptedPassword) {
+          message.textContent = 'Enter a password.';
+          message.classList.add('show');
+          passwordInput.focus();
+          return;
+        }
+
+        message.textContent = 'Access denied.';
         message.classList.add('show');
+        passwordInput.value = '';
         passwordInput.focus();
-        return;
-      }
-
-      message.textContent = 'Access denied.';
-      message.classList.add('show');
-      passwordInput.value = '';
-      passwordInput.focus();
-    });
+      });
+    }
   <\/script>
 </body>
 </html>`;
@@ -188,36 +269,39 @@ export default function MinimalistLoginLandingPage() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white p-6 md:p-10">
+    <div className="min-h-screen p-6 md:p-10" style={{ background: '#dfe3f3', color: '#1e2230' }}>
       <div className="mx-auto max-w-6xl grid gap-6 lg:grid-cols-2">
-        <section className="rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/40 overflow-hidden min-h-[640px]">
+        <section className="overflow-hidden rounded-3xl border border-white/40 min-h-[640px]" style={{ background: 'rgba(255,255,255,0.22)', boxShadow: '0 8px 24px rgba(112,124,165,0.08)' }}>
           <iframe
             title="Login preview"
             srcDoc={previewHtml}
-            className="h-[640px] w-full border-0 bg-black"
+            className="h-[640px] w-full border-0"
+            style={{ background: '#dfe3f3' }}
+            sandbox="allow-scripts allow-forms"
           />
         </section>
 
-        <section className="rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/40 p-6 md:p-8">
+        <section className="rounded-3xl p-6 md:p-8" style={{ background: 'rgba(255,255,255,0.24)', border: '1px solid rgba(255,255,255,0.42)', boxShadow: '0 8px 24px rgba(112,124,165,0.08)' }}>
           <div className="mb-4">
-            <h1 className="text-3xl font-semibold tracking-tight text-white">index.html</h1>
-            <p className="mt-2 text-sm text-white/60">
-              Copy into a file named index.html for GitHub Pages.
+            <h1 className="text-3xl font-semibold tracking-tight" style={{ color: '#1e2230' }}>index.html</h1>
+            <p className="mt-2 text-sm" style={{ color: 'rgba(30,34,48,0.62)' }}>
+              Copy this into a file named index.html for GitHub Pages.
             </p>
           </div>
 
-          <pre className="overflow-auto rounded-2xl border border-white/10 bg-black/40 p-4 text-xs text-white whitespace-pre-wrap break-words">
+          <pre className="overflow-auto rounded-2xl p-4 text-xs whitespace-pre-wrap break-words" style={{ background: 'rgba(255,255,255,0.22)', border: '1px solid rgba(255,255,255,0.42)', color: '#1e2230' }}>
             <code>{htmlCode}</code>
           </pre>
 
-          <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/70">
-            <p className="font-medium text-white">Manual test cases</p>
+          <div className="mt-4 rounded-2xl p-4 text-sm" style={{ background: 'rgba(255,255,255,0.22)', border: '1px solid rgba(255,255,255,0.42)', color: 'rgba(30,34,48,0.72)' }}>
+            <p className="font-medium" style={{ color: '#1e2230' }}>Manual test cases</p>
             <ol className="mt-2 list-decimal pl-5 space-y-1">
-              <li>Load page → centered card appears.</li>
-              <li>Submit empty → “Enter a password.”</li>
-              <li>Submit any input → “Access denied.”</li>
-              <li>Input clears and refocuses.</li>
-              <li>No page reload on submit.</li>
+              <li>Load page → pale blue-gray background appears.</li>
+              <li>Login card uses clear glassmorphism without a muddy dark shadow behind it.</li>
+              <li>Card sits higher on the page and feels closer to the reference image.</li>
+              <li>Submit empty field → “Enter a password.”</li>
+              <li>Submit any typed value → “Access denied.”</li>
+              <li>After denied submit → field clears, focus returns, and the page does not reload.</li>
             </ol>
           </div>
         </section>
