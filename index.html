@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #dfe3f3;
       --text: #1e2230;
       --muted: rgba(30, 34, 48, 0.44);
-      --glass-fill: rgba(255, 255, 255, 0.30);
-      --glass-fill-strong: rgba(255, 255, 255, 0.42);
-      --glass-border: rgba(255, 255, 255, 0.48);
-      --glass-stroke: rgba(255, 255, 255, 0.62);
-      --input-fill: rgba(255, 255, 255, 0.36);
       --button-text: #1c2030;
-      --button-fill: rgba(255, 255, 255, 0.34);
-      --message-fill: rgba(255, 255, 255, 0.26);
-      --message-border: rgba(255, 255, 255, 0.42);
     }
 
     * {
@@ -50,7 +42,6 @@
     body::after {
       content: "";
       position: fixed;
-      inset: auto;
       pointer-events: none;
       border-radius: 999px;
       filter: blur(70px);
@@ -62,7 +53,7 @@
       height: 320px;
       top: -80px;
       right: -40px;
-      background: rgba(255, 255, 255, 0.30);
+      background: rgba(255, 255, 255, 0.3);
     }
 
     body::after {
@@ -84,23 +75,23 @@
       position: relative;
       border-radius: 24px;
       padding: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.22) 100%);
-      border: 1px solid rgba(255,255,255,0.52);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.22) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.52);
       backdrop-filter: blur(22px) saturate(135%);
       -webkit-backdrop-filter: blur(22px) saturate(135%);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.45),
-        0 8px 24px rgba(112, 124, 165, 0.10);
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 8px 24px rgba(112, 124, 165, 0.1);
     }
 
     .panel {
       border-radius: 18px;
       padding: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.22) 100%);
-      border: 1px solid rgba(255,255,255,0.44);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.22) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.44);
       backdrop-filter: blur(18px) saturate(130%);
       -webkit-backdrop-filter: blur(18px) saturate(130%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
 
     form {
@@ -125,50 +116,50 @@
       height: 54px;
       padding: 0 16px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.40);
-      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.25) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.25) 100%);
       color: var(--text);
       font-size: 0.95rem;
       font-weight: 500;
       outline: none;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.34);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
       transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
     }
 
     input::placeholder {
-      color: rgba(30, 34, 48, 0.50);
+      color: rgba(30, 34, 48, 0.5);
     }
 
     input:focus {
-      border-color: rgba(255,255,255,0.60);
-      background: linear-gradient(180deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.28) 100%);
+      border-color: rgba(255, 255, 255, 0.6);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.28) 100%);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.42),
-        0 0 0 3px rgba(255,255,255,0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.42),
+        0 0 0 3px rgba(255, 255, 255, 0.22);
       transform: translateY(-1px);
     }
 
     button {
       width: 100%;
       height: 54px;
-      border: 1px solid rgba(255,255,255,0.42);
+      border: 1px solid rgba(255, 255, 255, 0.42);
       border-radius: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.30) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.3) 100%);
       color: var(--button-text);
       font-size: 0.95rem;
       font-weight: 500;
       cursor: pointer;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.40);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
       transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
     }
 
     button:hover {
-      background: linear-gradient(180deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.34) 100%);
-      border-color: rgba(255,255,255,0.56);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.34) 100%);
+      border-color: rgba(255, 255, 255, 0.56);
       transform: translateY(-1px);
     }
 
@@ -181,11 +172,8 @@
       margin-top: 10px;
       padding: 0;
       font-size: 0.84rem;
-      font-family: inherit;
       font-weight: 500;
       color: rgba(30, 34, 48, 0.68);
-      background: transparent;
-      border: none;
       opacity: 0;
       transition: opacity 160ms ease;
     }
@@ -224,7 +212,7 @@
             placeholder="Password"
             autocomplete="current-password"
             required
-          />
+          >
           <button type="submit">Submit</button>
         </form>
         <div id="message" class="message" aria-live="polite"></div>
@@ -233,61 +221,29 @@
   </main>
 
   <script>
-    const form = document.getElementById('loginForm');
-    const passwordInput = document.getElementById('password');
-    const message = document.getElementById('message');
+    const form = document.getElementById("loginForm");
+    const passwordInput = document.getElementById("password");
+    const message = document.getElementById("message");
 
     if (form && passwordInput && message) {
-      form.addEventListener('submit', function (event) {
+      form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const attemptedPassword = passwordInput.value.trim();
 
         if (!attemptedPassword) {
-          message.textContent = 'Enter a password.';
-          message.classList.add('show');
+          message.textContent = "Enter a password.";
+          message.classList.add("show");
           passwordInput.focus();
           return;
         }
 
-        message.textContent = 'Access denied.';
-        message.classList.add('show');
-        passwordInput.value = '';
+        message.textContent = "Demo only. No login action yet.";
+        message.classList.add("show");
+        passwordInput.value = "";
         passwordInput.focus();
       });
     }
   </script>
 </body>
-</html>`;
-
-  const htmlCode = rawHtmlCode;
-  const previewHtml = rawHtmlCode.replace('</script>', '<\/script>');
-
-  return (
-    <div className="min-h-screen p-6 md:p-10" style={{ background: '#dfe3f3', color: '#1e2230' }}>
-      <div className="mx-auto max-w-6xl grid gap-6 lg:grid-cols-2">
-        <section className="overflow-hidden rounded-3xl border border-white/40 min-h-[640px]" style={{ background: 'rgba(255,255,255,0.22)', boxShadow: '0 8px 24px rgba(112,124,165,0.08)' }}>
-          <iframe
-            title="Login preview"
-            srcDoc={previewHtml}
-            className="h-[640px] w-full border-0"
-            style={{ background: '#dfe3f3' }}
-            sandbox="allow-scripts allow-forms"
-          />
-        </section>
-
-        <section className="rounded-3xl p-6 md:p-8" style={{ background: 'rgba(255,255,255,0.24)', border: '1px solid rgba(255,255,255,0.42)', boxShadow: '0 8px 24px rgba(112,124,165,0.08)' }}>
-          <div className="mb-4">
-            <h1 className="text-3xl font-semibold tracking-tight" style={{ color: '#1e2230' }}>index.html</h1>
-            
-          </div>
-
-          <pre className="overflow-auto rounded-2xl p-4 text-xs whitespace-pre-wrap break-words" style={{ background: 'rgba(255,255,255,0.22)', border: '1px solid rgba(255,255,255,0.42)', color: '#1e2230' }}>
-            <code>{htmlCode}</code>
-          </pre>
-
-                  </section>
-      </div>
-    </div>
-  );
-}
+</html>
